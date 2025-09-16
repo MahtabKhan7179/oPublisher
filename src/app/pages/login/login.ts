@@ -24,9 +24,6 @@ export class LoginComponent {
   constructor(private master: Master,private router: Router) {}
 
   login() {
-    const user = { username: this.loginObj.username, password: this.loginObj.password }; // or full user object
-    this.master.login(user);
-    this.router.navigate(['/home']);
     const localData = localStorage.getItem('registeredUsers')
     if(localData != null) {
       this.registeredUsers = JSON.parse(localData)
@@ -36,7 +33,9 @@ export class LoginComponent {
       this.errorMessage = '';
       alert('Login successful!');
       localStorage.setItem('loggedUser', JSON.stringify(this.loginObj));
-      this.router.navigate(['']);
+      const user = { username: this.loginObj.username, password: this.loginObj.password }; // or full user object
+      this.master.login(user);
+      this.router.navigate(['/home']);
     } else {
       this.errorMessage = 'Please enter both username and password.';
       alert('Wrong credentials');
