@@ -1,0 +1,23 @@
+<div class="articles-container">
+  <h2>📰 Articles</h2>
+
+  <div *ngIf="master.user(); else guest" class="create-button">
+    <a [routerLink]="['/createArticle']">
+      <button>Create Article</button>
+    </a>
+  </div>
+
+<ng-template #guest>
+  <p>Please log in to create articles.</p>
+</ng-template>
+
+
+  <div class="article-card" *ngFor="let article of registeredArticles">
+    <img [src]="article.image" alt="{{ article.title }}" />
+    <h3>{{ article.title }}</h3>
+    <p>{{ article.summary }}</p>
+    <a [routerLink]="['/article', article.id]">
+      <button>View Article</button>
+    </a>
+  </div>
+</div>

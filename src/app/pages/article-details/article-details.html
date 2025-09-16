@@ -1,0 +1,25 @@
+<div class="details-container" *ngIf="article">
+  <h2>{{ article.title }}</h2>
+  <img [src]="article.image" alt="{{ article.title }}" />
+  <p>{{ article.summary }}</p>
+
+  <hr />
+
+  <div class="comments-section">
+    <h3>Comments</h3>
+
+    <div *ngIf="userLoggedIn; else loginPrompt">
+      <textarea [(ngModel)]="commentText" placeholder="Write your comment..."></textarea>
+      <button (click)="submitComment()">Submit Comment</button>
+    </div>
+
+    <ng-template #loginPrompt>
+      <p>Please log in to post a comment.</p>
+    </ng-template>
+
+    <div class="comment" *ngFor="let comment of comments">
+      <p><strong>{{ comment.username }}</strong> <em>{{ comment.timestamp | date:'short' }}</em></p>
+      <p>{{ comment.text }}</p>
+    </div>
+  </div>
+</div>

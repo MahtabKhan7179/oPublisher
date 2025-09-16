@@ -1,0 +1,16 @@
+<div class="form-container">
+  <h2>Create New Article</h2>
+  <form (ngSubmit)="submitArticle()">
+    <input type="text" placeholder="Title" [(ngModel)]="article.title" name="title" required />
+    <textarea placeholder="Summary" [(ngModel)]="article.summary" name="summary" required></textarea>
+    <input type="text" placeholder="Image URL" [(ngModel)]="article.image" name="image" required />
+
+    <div *ngIf="master.user(); else guest" class="create-button">
+      <button type="submit">Submit Article</button>
+    </div>
+
+    <ng-template #guest>
+      <p>Please log in to create articles.</p>
+    </ng-template>
+  </form>
+</div>

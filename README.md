@@ -2,6 +2,14 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.6.
 
+To start apllication use command: - ng serve
+
+LocalStorage has been used for storing data of registration of user, login data of user and creation of new articles.
+
+Iniatially four articles have been added to show if functionality is working or not.
+
+Only logged users can comment on articles and create-articles, to login one must register as user first
+with username, email and password.
 ## Development server
 
 To start a local development server, run:
